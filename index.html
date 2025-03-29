@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streaming</title>
+    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #playerContainer {
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-fox { background: #3b82f6; color: white; }
+        .btn-sky { background: #22c55e; color: white; }
+        .btn-hindi { background: #ef4444; color: white; }
+        .btn:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <div id="playerContainer">
+        <div id="jwplayerDiv"></div>
+    </div>
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(//, "\").replace(//, "\");
+            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }let streamUrl = getParameterByName('stream') || "https://hssportsprepack.akamaized.net/videos/cricket/1271337416/1540040200/in/eng/v2/avc/1743193368509/hls/plain/master_DVaSr5zbSVAdnj2a_full_sd.m3u8";
+    
+    const player = jwplayer("jwplayerDiv").setup({
+        file: streamUrl,
+        autostart: true,
+        controls: true,
+        width: "100%",
+        aspectratio: "16:9"
+    });
+</script>
+
+</body>
+</html>
